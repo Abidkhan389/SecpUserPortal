@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-header-tab card-header">
+        <div class="card-header-title font-size-lg text-capitalize fw-normal">
+            <i class="header-icon lnr-laptop-phone icon-gradient bg-happy-itmeo mr-3  opacity-6"></i>
+            Topic's
+        </div>
+    </div>
+    <div class="card-min-height p-3">
+
+        <div class="row">
+            <div class="col-md-12">
+                <ngx-datatable #myTable class="material striped"  [rows]="rows" [headerHeight]="50"
+                [footerHeight]="50" [columnMode]="'force'" [scrollbarH]='true' [reorderable]="false" [rowHeight]="'auto'"
+                [count]="count" [externalPaging]="true" [offset]="0" [limit]="tableParams.limit"
+                 >
+            
+                <ngx-datatable-column name="#" prop="id" [width]="70"></ngx-datatable-column>
+                <ngx-datatable-column name="Action" [sortable]="false" [resizeable]="true" [width]="80">
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        <span style="overflow: visible;">
+                            <a href="#" (click)="viewDetail(content,row)" title="View details">
+                                <i class="fa fa-eye me-2"></i>
+                            </a>
+                        </span>
+                    </ng-template>
+                </ngx-datatable-column>
+            
+                <ngx-datatable-column prop="name" name="Training"></ngx-datatable-column>
+                <ngx-datatable-column prop="company" name="Company"></ngx-datatable-column>
+            </ngx-datatable>
+            </div>
+        </div>
+
+    </div>
+</div>

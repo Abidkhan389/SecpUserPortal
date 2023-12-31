@@ -1,0 +1,247 @@
+<div class="container-fluid">
+  <!-- <div class="login-containe p-1"> -->
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-6 bg-img">
+    <!-- <div class=" h-100" style="margin:10px 20px 10px;">
+    </div> -->
+    
+      
+        <!-- <img style="max-width:100%;max-height:100%;object-fit:cover;" src="../../../assets/images/auth/Group 5589.png"> -->
+      </div>
+    
+    <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+     <!-- <div class="mx-auto app-login-box col-lg-8 col-md-9 col-sm-10"> -->
+      
+
+     
+      
+      <div class="row">
+        <div class="col-12">
+        <div class="c-logo mb-2">
+          <img  src="../../../assets/images/auth/Dashboard Logo.png" alt="">
+        </div>
+        
+        <div>
+          <form role="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate action="">
+            <div class="row" style="width:85%;margin:auto;">
+              <div class="col-12">
+                <h4 class="mb-0 c-logo-desc mt-1">
+                  <div>Sign In</div>
+                  <span>Sign in using your email address</span>
+                  <hr>
+                </h4>
+              </div>
+              <div class="col-12">
+                <h6 class="h5-text">Email ID:</h6>
+                <div class="input-group mb-1">
+                  <input type="text" class="form-control login-input" placeholder="Eg.admin@mail.com" 
+                  aria-label="Recipient's username" aria-describedby="basic-addon2" formControlName="userName">
+                  <div class="input-group-append">
+                    <span class="input-group-text input-group-text-login login-input-append" id="basic-addon2">
+                      <img width="25px" src="../../../assets/images/auth/Mail.png">
+                    </span>
+                  </div>
+                </div>
+                <div *ngIf="form.controls['userName'].touched && !form.controls['userName'].valid">
+                  <div *ngFor="let validation of validationMessages.value" class="has-danger">
+                      <span class="form-control-feedback"
+                          *ngIf="form.controls['userName'].hasError(validation.type) ">
+                          {{validation.message}}
+                      </span>
+                  </div>
+              </div>
+              </div>
+              <div class="col-12 mt-2">
+                <h6 class="h5-text">Password:</h6>
+                <div class="input-group mb-1">
+                  <input type="password" class="form-control login-input" placeholder="password" 
+                  aria-label="Recipient's username" aria-describedby="basic-addon2" formControlName="password">
+                  <div class="input-group-append">
+                    <span class="input-group-text input-group-text-login login-input-append" id="basic-addon2">
+                      <img width="25px" src="../../../assets/images/auth/Lock.png">
+                    </span>
+                   
+                  </div>
+                
+                 
+                </div>
+                <div *ngIf="form.controls['password'].touched && !form.controls['password'].valid">
+                  <div *ngFor="let validation of validationMessages.value" class="has-danger">
+                      <span class="form-control-feedback"
+                          *ngIf="form.controls['password'].hasError(validation.type) ">
+                          {{validation.message}}
+                      </span>
+                  </div>
+              </div>
+                
+              </div>
+              <div class="col-12">
+                <div class="custom-control custom-checkbox form-check">
+                  <input id="exampleCheck" type="checkbox" formControlName="remember" name="check" autocomplete="off"
+                    class="form-check-input" value="true" />
+                  <label for="exampleCheck" class="form-label form-check-label">
+                    <span class="h6-text">Remember me</span>
+                  </label>
+                  <div class="float-end">
+                    <a href="" class="h6-text"><u>Forgot Password</u></a>
+                  </div>
+                </div>
+               </div>
+               <div class="col-12 text-center p-3">
+                <button type="submit" class="login-btn" [disabled]="!form.valid">LOGIN</button>
+                <hr class="login-line">
+                <div class="signup-text">
+                  Dont have an account?Signup
+                </div>
+              </div>
+              
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+        <div class="row ">
+          <div class="col-12">
+            <div class="float-end">
+              <div class="h6-text powered-text float-end">Powered By</div>
+              <div>
+              <img width="130px" src="../../../assets/images/auth/Group 9.png"></div>
+            
+            </div>
+          </div>
+        </div> 
+     
+    <!-- </div> -->
+    </div>
+  </div>
+<!-- </div> -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <form role="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate action="">
+  <div class="modal-dialog w-100 mx-auto">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="h5 modal-title text-center">
+          <div class=" text-center mb-3">
+            <img  class="logo-animation" src="../../../assets/images/Premier_Logo-1.jpg" width="35%" alt="">
+          </div>
+          <h4 class="mt-2">
+            <div>Welcome back,</div>
+            <span>Please sign in to your account below.</span>
+          </h4>
+        </div>
+        <div id="exampleInputGroup1" role="group" aria-describedby="exampleInputGroup1__BV_description_" class="mb-3">
+          <div>
+            <input id="exampleInput1" formControlName="email" type="email" placeholder="Enter email..."
+              required="required" aria-required="true" class="form-control"
+              aria-describedby="exampleInputGroup1__BV_description_" />
+            <small tabindex="-1" id="exampleInputGroup1__BV_description_" class="form-text text-muted">
+              We'll never share your email with anyone else.
+            </small>
+          </div>
+        </div>
+        <div id="exampleInputGroup2" role="group" class="mb-3">
+          <div>
+            <input id="exampleInput2" formControlName="password" type="password" placeholder="Enter password..."
+              required="required" aria-required="true" class="form-control" />
+          </div>
+        </div>
+        <div class="custom-control custom-checkbox form-check">
+          <input id="exampleCheck" type="checkbox" formControlName="remember" name="check" autocomplete="off"
+            class="form-check-input" value="true" />
+          <label for="exampleCheck" class="form-label form-check-label">
+            Keep me logged in
+          </label>
+        </div>
+        <div class="divider"></div>
+        <h6 class="mb-0">
+          No account?
+          <a routerLink="" class="text-primary">Sign up now</a>
+        </h6>
+      </div>
+      <div class="modal-footer clearfix">
+        <div class="float-start">
+          <a routerLink="" class="btn-lg btn btn-link">Recover Password</a>
+        </div>
+        <div class="float-end">
+          <button type="submit" class="btn btn-primary btn-lg">
+            Login to Dashboard
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form> -->

@@ -1,0 +1,80 @@
+<div class="container-fluid">
+    <div class="row" style="background-color: #ebfff7">
+        <nav aria-label="breadcrumb" class="mt-2" style="--bs-breadcrumb-divider: '|';">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page"><a routerLink="/dashboard"><i
+                            class="fa fa-home fa-2x" style="color: black; cursor: pointer;" aria-hidden="true"></i>
+                    </a></li>
+                <div class="verticalLine"></div>
+                <li class="breadcrumb-item active custom-margin hoverTxtUndeline"><a routerLink="/courses">Courses
+                    </a></li>
+                <div class="verticalLine"></div>
+                <li class="breadcrumb-item active custom-margin hoverTxtUndeline"><a routerLink="/lecture"
+                        (click)="gotoForLecture()">Lecture
+                    </a></li>
+                <div class="verticalLine"></div>
+                <li class="breadcrumb-item active custom-margin hoverTxtUndeline"><a routerLink="/course-content"
+                        (click)="gotoForcoursecontent()">Lecture Content
+                    </a></li>
+                <div class="verticalLine"></div>
+                <li class="breadcrumb-item active custom-margin" aria-current="page">Watch</li>
+            </ol>
+        </nav>
+
+    </div>
+    <div class="row mt-2">
+        <div class="col-12 watch-title-wrapper">
+            <h5 class="h5-text">{{title}}</h5>
+            <span class="next-span" style="top:0">
+                <a href="/presentation">Next</a>
+                <i class="fa fa-arrow-right"></i>
+            </span>
+        </div>
+    </div>
+    <div class="row mt-1">
+        <div class="col-lg-9 col-md-8 col-sm-12 col-12 mb-3 animate__animated animate__zoomIn">
+            <div class="card iframe-card ">
+                <div class="card-content text-center">
+                    <div class="card-body p-0">
+                        <iframe [src]="src | safepipe: 'resourceUrl'">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12 col-12">
+            <div class="card course-material-card">
+                <div class="card-content inherit-height">
+                    <div class="card-body inherit-height">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 class="time-green-text">Lecture Content</h6>
+                            </div>
+                            <div class="col-12" style="padding:10px 5px" *ngFor="let c of lectureModel?.courseContents">
+
+                                <div class="row">
+                                    <div class="col-2" style="text-align:end">
+                                        <img width="30" class="img-align-grade"
+                                            src="../../../assets/images/course-content/Group 3322.png"
+                                            *ngIf="c.type==0">
+                                        <img width="30" class="img-align-grade"
+                                            src="../../../assets/images/course-content/Group 3341.png"
+                                            *ngIf="c.type==1">
+                                        <!-- <img width="30" class="img-align-grade" src="../../../assets/images/course-content/test.png" *ngIf="t.type==2"> -->
+                                    </div>
+                                    <div class="col-10" style="text-align:left;">
+                                        <h6 class="h5-text mb-0">{{c.contentName}}</h6>
+                                        <h6 class="h6-text">{{c.text}}</h6>
+                                    </div>
+
+                                </div>
+                                <hr class="cm-line line-color">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

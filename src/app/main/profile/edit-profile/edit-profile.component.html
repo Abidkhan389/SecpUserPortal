@@ -1,0 +1,297 @@
+<div class="row mt-2">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-3 animate__animated animate__zoomIn">
+        <div class="col-12 accordian-wrapper">
+            <ngb-accordion #acc="ngbAccordion" [activeIds]="['panel1']">
+                <ngb-panel id="panel1">
+                    <ng-template ngbPanelTitle>
+                        <div class="panel-title" style="position:relative;">
+                            <h6 class="profile-panel-title-text">Edit My Profile</h6>
+                            <span class="vw-btn">
+                                <button routerLink="/profile" class="btn btn-outline-success view-profile"
+                                    style="margin-left: 30px;float: right;">View
+                                    Profile</button>
+                            </span>
+                        </div>
+                    </ng-template>
+                    <ng-template ngbPanelContent>
+                        <div class="col-12">
+                            <hr class="sb-line-2" style="margin:10px 0px">
+                        </div>
+                        <div class="col-12">
+                            <h6 style="color: green;"><b>Introduction</b></h6>
+                            <p>Let the SECP comunity of other learners and instructors recognize you.</p>
+                            <form [formGroup]="userForm" (ngSubmit)="EditProfile()">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-10 col-12">
+                                        <div class="form-group required">
+                                            <label class="profile-lable" for="firstName">First Name</label>
+                                            <input type="text" class="form-control" formControlName="firstName">
+                                            <div
+                                                *ngIf="userForm.controls['firstName'].touched && !userForm.controls['firstName'].valid">
+                                                <div *ngFor="let validation of validationMessages.value"
+                                                    class="has-danger">
+                                                    <span class="form-control-feedback"
+                                                        *ngIf="userForm.controls['firstName'].hasError(validation.type) ">
+                                                        {{validation.message}}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-10 col-12">
+                                        <div class="form-group required">
+                                            <label class="profile-lable" for="lastName">Last Name</label>
+                                            <input type="text" class="form-control" formControlName="lastName">
+                                            <div
+                                                *ngIf="userForm.controls['lastName'].touched && !userForm.controls['lastName'].valid">
+                                                <div *ngFor="let validation of validationMessages.value"
+                                                    class="has-danger">
+                                                    <span class="form-control-feedback"
+                                                        *ngIf="userForm.controls['lastName'].hasError(validation.type) ">
+                                                        {{validation.message}}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="profile-lable" for="exampleFormControlFile1">Your
+                                                Avator</label>
+                                        </div>
+                                        <img src="../../../assets/images/avatars/avator2.png" width="100"
+                                            class="rounded-circle">
+                                        <input type="file" class="form-control-file" id="exampleFormControlFile1"
+                                            style="margin-left:8px;">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <hr class="sb-line-2" style="margin:10px 0px">
+                                </div>
+                                <div>
+                                    <h6 style="color: green;"><b>Education & Experience</b></h6>
+                                    <p>Tell us about your experience and education to get personalized learning
+                                        experience with
+                                        course recommendation.</p>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="profile-lable" for="university">University</label>
+                                                <input type="text" class="form-control" id="university"
+                                                    formControlName="university">
+                                                <div
+                                                    *ngIf="userForm.controls['university'].touched && !userForm.controls['university'].valid">
+                                                    <div *ngFor="let validation of validationMessages.value"
+                                                        class="has-danger">
+                                                        <span class="form-control-feedback"
+                                                            *ngIf="userForm.controls['university'].hasError(validation.type) ">
+                                                            {{validation.message}}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label class="profile-lable" for="highestDegree">Highest
+                                                        Degree</label>
+                                                    <input type="text" class="form-control" id="highestDegree"
+                                                        formControlName="highestDegree">
+                                                    <div
+                                                        *ngIf="userForm.controls['highestDegree'].touched && !userForm.controls['highestDegree'].valid">
+                                                        <div *ngFor="let validation of validationMessages.value"
+                                                            class="has-danger">
+                                                            <span class="form-control-feedback"
+                                                                *ngIf="userForm.controls['highestDegree'].hasError(validation.type) ">
+                                                                {{validation.message}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="profile-lable" for="occupation">Occupation</label>
+                                                <input type="text" class="form-control" id="occupation"
+                                                    formControlName="occupation">
+                                                <div
+                                                    *ngIf="userForm.controls['occupation'].touched && !userForm.controls['occupation'].valid">
+                                                    <div *ngFor="let validation of validationMessages.value"
+                                                        class="has-danger">
+                                                        <span class="form-control-feedback"
+                                                            *ngIf="userForm.controls['occupation'].hasError(validation.type) ">
+                                                            {{validation.message}}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="profile-lable" for="major">Field Or Major</label>
+                                                <input type="text" class="form-control" id="major"
+                                                    formControlName="major">
+                                                <div
+                                                    *ngIf="userForm.controls['major'].touched && !userForm.controls['major'].valid">
+                                                    <div *ngFor="let validation of validationMessages.value"
+                                                        class="has-danger">
+                                                        <span class="form-control-feedback"
+                                                            *ngIf="userForm.controls['major'].hasError(validation.type) ">
+                                                            {{validation.message}}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <hr class="sb-line-2" style="margin:10px 0px">
+                                </div>
+                                <div>
+                                    <h6 style="color: green;"><b>Deatils About You</b></h6>
+                                    <p>Introduce yourself to SECP community. Connect with learners like you to grow your
+                                        network.</p>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <label class="profile-lable" for="about">About Me</label>
+                                                <textarea class="form-control" id="about"
+                                                    formControlName="about"></textarea>
+                                                <div
+                                                    *ngIf="userForm.controls['about'].touched && !userForm.controls['about'].valid">
+                                                    <div *ngFor="let validation of validationMessages.value"
+                                                        class="has-danger">
+                                                        <span class="form-control-feedback"
+                                                            *ngIf="userForm.controls['about'].hasError(validation.type) ">
+                                                            {{validation.message}}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <div class="form-group required">
+                                                    <label class="profile-lable" for="address">Address</label>
+                                                    <input type="text" class="form-control" id="address"
+                                                        formControlName="address">
+                                                    <div
+                                                        *ngIf="userForm.controls['address'].touched && !userForm.controls['address'].valid">
+                                                        <div *ngFor="let validation of validationMessages.value"
+                                                            class="has-danger">
+                                                            <span class="form-control-feedback"
+                                                                *ngIf="userForm.controls['address'].hasError(validation.type) ">
+                                                                {{validation.message}}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group">
+                                                <h6 class="profile-lable">Gender</h6>
+                                                <label class="radio-inline" style="padding-left: 25px;"
+                                                    for="gender"><input type="radio" name="gender"
+                                                        formControlName="gender" id="Male"
+                                                        value="Male"><b>Male</b></label>
+                                                <label class="radio-inline" style="padding-left: 25px;"
+                                                    for="gender"><input type="radio" name="gender"
+                                                        formControlName="gender" id="Female"
+                                                        value="Female"><b>Female</b></label>
+                                                <label class="radio-inline" style="padding-left: 25px;"
+                                                    for="gender"><input type="radio" name="gender"
+                                                        formControlName="gender" id="Other"
+                                                        value="Other"><b>Other</b></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group required">
+                                                <label class="profile-lable" for="dob">Date of Birth</label>
+                                                <div class="input-group mb-0">
+                                                    <input class="form-control " placeholder="mm/dd/yyyy" name="d2"
+                                                        formControlName="dob" ngbDatepicker #d2="ngbDatepicker"
+                                                        [(ngModel)]="dob">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-outline-secondary" type="button">
+                                                            <i class="fa fa-calendar" (click)="d2.toggle()"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- <div
+                                            *ngIf="form.controls['dOB'].touched && !form.controls['dOB'].valid">
+                                            <div *ngFor="let validation of validationMessages.dateOfBirth"
+                                                class="has-danger">
+                                                <span class="form-control-feedback"
+                                                    *ngIf="form.controls['dOB'].hasError(validation.type) ">
+                                                    {{validation.message}}
+                                                </span>
+                                            </div>
+                                        </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group required">
+                                                <label class="profile-lable" for="mobileNumber">Mobile Number</label>
+                                                <input type="text" class="form-control" id="mobileNumber"
+                                                    formControlName="mobileNumber">
+                                                <div
+                                                    *ngIf="userForm.controls['mobileNumber'].touched && !userForm.controls['mobileNumber'].valid">
+                                                    <div *ngFor="let validation of validationMessages.mobileLength"
+                                                        class="has-danger">
+                                                        <span class="form-control-feedback"
+                                                            *ngIf="userForm.controls['mobileNumber'].hasError(validation.type) ">
+                                                            {{validation.message}}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                            <div class="form-group required">
+                                                <label class="profile-lable" for="cnic">CNIC</label>
+                                                <input type="text" class="form-control" id="cnic"
+                                                    formControlName="cnic">
+                                                <div
+                                                    *ngIf="userForm.controls['cnic'].touched && !userForm.controls['cnic'].valid">
+                                                    <div *ngFor="let validation of validationMessages.value"
+                                                        class="has-danger">
+                                                        <span class="form-control-feedback"
+                                                            *ngIf="userForm.controls['cnic'].hasError(validation.type) ">
+                                                            {{validation.message}}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-12">
+                                    <hr class="sb-line-2" style="margin:10px 0px">
+                                </div>
+                                <span>
+                                    <button type="submit" class="btn btn-success profile-button" style="float: right;
+                        margin-bottom: 5px;">Save Changes</button>
+                                </span>
+                            </form>
+                        </div>
+                    </ng-template>
+                </ngb-panel>
+            </ngb-accordion>
+
+        </div>
+
+    </div>
+</div>

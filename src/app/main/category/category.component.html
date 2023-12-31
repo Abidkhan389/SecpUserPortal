@@ -1,0 +1,26 @@
+
+<div class="row">
+    <!----cards-->
+    <div class="col-12">
+        <span class="dashboard-headings">All Categories</span>
+    </div>
+     <div class="col-lg-3 col-md-6 col-sm-12 col-12 animate__animated animate__zoomIn" style="padding: 0.65rem;" *ngFor="let item of categoryArr">
+        <div class="card overview-card decor-cc">
+            <div class="card-content inherit-height">
+                <div class="card-body inherit-height">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-2 overview-img-col" >
+                            <img width="40" src="../../../assets/images/dashboard/overview/award.png">
+                        </div>
+                        <div class="col-md-10 col-sm-10 col-10">
+                            <span style="font-size:20px">
+                                <b>{{item.categoryName}}</b>
+                                    <h6 class="h6-text">{{item.count}} Courses</h6>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>

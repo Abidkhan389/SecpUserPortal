@@ -1,0 +1,256 @@
+<div class="container-fluid">
+    <div class="row" style="background-color: #ebfff7;">
+        <nav aria-label="breadcrumb"  class="mt-2" style="--bs-breadcrumb-divider: '|';">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page"><a routerLink="/dashboard"><i
+                            class="fa fa-home fa-2x" style="color: black; cursor: pointer;" aria-hidden="true"></i>
+                    </a></li>
+                    <div class="verticalLine"></div>
+                <li class="breadcrumb-item active custom-margin hoverTxtUndeline"><a routerLink="/courses">Courses
+                    </a></li>
+                    <div class="verticalLine"></div>
+                <li class="breadcrumb-item active custom-margin hoverTxtUndeline"><a routerLink="/lecture"
+                        (click)="gotoForLecture()">Lecture
+                    </a></li>
+                    <div class="verticalLine"></div>
+                <li class="breadcrumb-item active custom-margin" aria-current="page">Lecture Content</li>
+            </ol>
+        </nav>
+
+    </div>
+    <div class="row mt-2">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-12 mb-3 animate__animated animate__zoomIn">
+            <div class="col-12 accordian-wrapper">
+                <ngb-accordion #acc="ngbAccordion" [activeIds]="['panel1']">
+                    <ngb-panel id="panel1">
+                        <ng-template ngbPanelTitle>
+                            <div class="panel-title" (click)="toggle()">
+                                <img width="25" src="../../../assets/images/course-content/arrow_back_ios.png"
+                                    *ngIf="collapse">
+                                <img width="25" src="../../../assets/images/course-content/arow-up.png"
+                                    *ngIf="!collapse">
+                                <h6 class="content-panel-title-text" style="padding-left: 15px;">
+                                    {{contentModel?.courseName}}-</h6>
+                                <h6 class="content-panel-title-text">{{contentModel?.lectureTitle}}</h6>
+                            </div>
+
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <div class="row" style="margin:0px 35px">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <h6 class="innerpanel-title-text">Lecture Description</h6>
+                                    </div>
+
+                                </div>
+                                <div class="col-12">
+                                    <hr class="sb-line-2" style="margin:10px 0px">
+                                </div>
+                                <div class="col-12">
+                                    {{contentModel?.description}}
+                                </div>
+                                <div class="col-12">
+                                    <hr class="sb-line-2" style="margin:10px 0px">
+                                </div>
+                                <div class="col-12">
+                                    <ngb-accordion class="abc" #acc="ngbAccordion" [activeIds]="['panel2']">
+                                        <ngb-panel id="panel2">
+                                            <ng-template ngbPanelTitle>
+                                                <div class="panel-title" (click)="toggleInner()"
+                                                    style="margin:0px -30px">
+                                                    <img width="25"
+                                                        src="../../../assets/images/course-content/arrow_back_ios.png"
+                                                        *ngIf="innercollapse">
+                                                    <img width="25"
+                                                        src="../../../assets/images/course-content/arow-up.png"
+                                                        *ngIf="!innercollapse">
+                                                    <h6 class="innerpanel-title-text">Lecture Content</h6>
+                                                </div>
+                                            </ng-template>
+                                            <ng-template ngbPanelContent>
+                                                <div class="row " *ngIf="!noContent">
+                                                    <div class="col-12" style="padding:5px 0px;"
+                                                        *ngFor="let content of contentModel?.courseContents">
+                                                        <div class="card panel-cards">
+                                                            <div class="card-content">
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                            <!-- <div class="panel-title"> -->
+                                                                            <!-- <div>
+                                                                <img class="img-align-grade" src="../../../assets/images/course-content/Group 3322.png" *ngIf="t.type==0">
+                                                                 <img class="img-align-grade" src="../../../assets/images/course-content/Group 3341.png" *ngIf="t.type==1">
+                                                                 <img class="img-align-grade" src="../../../assets/images/course-content/test.png" *ngIf="t.type==2">
+                                                                </div>
+                                                                 <div style="margin:0px 10px">
+                                                                 <h6 class="h5-text mb-0">{{t.training_name}}</h6>
+                                                                 <h6 class="h6-text">{{t.text}}</h6>
+                                                             </div> -->
+                                                                            <div class="row">
+                                                                                <div class="col-2 "
+                                                                                    style="text-align:end">
+                                                                                    <img width="30"
+                                                                                        class="img-align-grade"
+                                                                                        src="../../../assets/images/course-content/Group 3322.png"
+                                                                                        *ngIf="content.type==0">
+                                                                                    <img width="30"
+                                                                                        class="img-align-grade"
+                                                                                        src="../../../assets/images/course-content/Group 3341.png"
+                                                                                        *ngIf="content.type==1">
+                                                                                    <!-- <img width="30" class="img-align-grade" src="../../../assets/images/course-content/test.png" *ngIf="t.type==2"> -->
+                                                                                </div>
+                                                                                <div class="col-10 col-md-6 col-sm-12"
+                                                                                    style="text-align:left;">
+                                                                                    <h6 class="h5-text mb-0">
+                                                                                        {{content.contentName}}</h6>
+                                                                                    <h6 class="h6-text">{{content.text}}
+                                                                                    </h6>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <!-- </div> -->
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <button class="panel-btn"
+                                                                                *ngIf="content.type==1"
+                                                                                (click)="goto(content)">View
+                                                                                Content</button>
+                                                                            <button class="panel-btn"
+                                                                                *ngIf="content.type==0"
+                                                                                (click)="goto(content)">View
+                                                                                Video</button>
+                                                                            <!-- <button class="panel-btn" *ngIf="t.type==2" (click)="goto(t)">Attempt</button> -->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row " *ngIf="!noContent">
+                                                    <div class="col-12" style="padding:5px 0px;">
+                                                        <div class="card panel-cards">
+                                                            <div class="card-content">
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                            <div class="row">
+                                                                                <div class="col-2 "
+                                                                                    style="text-align:end">
+                                                                                    <img width="30"
+                                                                                        class="img-align-grade"
+                                                                                        src="../../../assets/images/course-content/test.png">
+                                                                                </div>
+                                                                                <div class="col-10 col-md-6 col-sm-12"
+                                                                                    style="text-align:left;">
+                                                                                    <h6 class="h5-text mb-0">Quiz</h6>
+                                                                                    <h6 class="h6-text">Attempt it</h6>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <button class="panel-btn"
+                                                                                (click)="gotoQuiz(contentModel)" [disabled]="isattempt"
+                                                                                [ngStyle]="{ color: isattempt? 'lightgreen'  : 'white'}">Attempt</button>
+                                                                                <!-- (click)="gotoQuiz(contentModel)" [disabled]="isattempt" 
+                                                                                [ngStyle]="{ color: isattempt? 'green'  : 'lightgreen'}">Attempt</button> -->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card w-100" *ngIf="noContent" style="background-color: #ebfff7;">
+                                                    <div class="card-body" style="text-align: center;">
+                                                      <h5 class="card-title">Lecture Content</h5>
+                                                      <p class="card-text" style="font-size: 18px;">Sorry!Content for this <b>Lecture</b>  Not Avaible right now.</p>
+                                                    </div>
+                                                  </div>
+                                            </ng-template>
+                                        </ngb-panel>
+
+                                    </ngb-accordion>
+
+                                </div>
+
+
+                            </div>
+                        </ng-template>
+                    </ngb-panel>
+
+
+                </ngb-accordion>
+
+            </div>
+
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+            <!-- <div class="col-12">
+            <div class="card schedule-card">
+                
+                <div class="card-content inherit-height">
+                    <div class="card-body inherit-height">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 class="time-green-text">Schedule</h6>
+                            </div>
+                            <div class="col-12" style="padding:5px">
+                                <div class="panel-title">
+                                    <div>
+                                    <img   src="../../../assets/images/course-content/event_available.png">
+                                    </div>
+                                    <div style="margin:2px 10px">
+                                    <h6 class="h6-text mb-0">Start Date:</h6>
+                                    </div>
+                                </div> 
+                                <div class="schedule-date-wrapper">
+                                    <h6 class="h5-text">Jan 20,2023</h6>
+                                </div>
+                                
+                            </div>
+                            <div>
+                                <hr>
+                            </div>
+                            <div class="col-12" style="padding:5px">
+                                <div class="panel-title">
+                                    <div>
+                                    <img   src="../../../assets/images/course-content/access_time.png">
+                                    </div>
+                                    <div style="margin:2px 10px">
+                                    <h6 class="h6-text mb-0">Estimated End Date:</h6>
+                                    </div>
+                                </div> 
+                                <div class="schedule-date-wrapper">
+                                    <h6 class="h5-text">Jan 26,2023</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div> -->
+            <div class="col-12" style="padding:2px">
+                <div class="card watch-grade-card " (click)="gotograde()">
+                    <div class="card-content inherit-height">
+                        <div class="card-body inherit-height">
+                            <div class="panel-title">
+
+                                <img src="../../../assets/images/course-content/sticky_note_2.png">
+
+                                <div style="margin:2px 10px">
+                                    <h6 class="h5-text mb-0">Grades</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 accordian-wrapper  animate__animated animate__zoomIn"
+            style="overflow-x:auto;overflow-y: auto;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width:45%">Item</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Due</th>
+                        <th scope="col">Weight</th>
+                        <th scope="col">Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of gradeList">
+                        <td style="width:45%">
+
+                            <div class="panel-title">
+                                <div>
+                                    <img class="img-align-grade" src="../../../assets/images/grade/Group 3322.png">
+                                </div>
+                                <div style="margin:0px 10px">
+                                    <h6 class="h5-text mb-0">{{i.courseTitle}}</h6>
+                                    <h6 class="h6-text">{{i.categoryName}}</h6>
+                                </div>
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="panel-title">
+                                <img src="../../../assets/images/grade/checkmark-circle.png">
+                                <h6 class="status-text h6-text">{{i.percentage > 60 ? "Completed" : "NotCompleted"}}
+                                </h6>
+
+                            </div>
+
+
+                        </td>
+                        <td class="h6-text">{{i.date}}</td>
+                        <td class="h6-text">{{i.percentage}}</td>
+                        <td>
+                            <div class="grade-div">
+                                {{i.grade}}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr *ngIf="noGrade" style="text-align: center;">
+                        <td colspan="4" class="h6-text">There is no <strong
+                                style="color: rgb(148 197 177);">Quiz</strong> done Yet for <strong
+                                style="color: rgb(148 197 177);">Grade</strong>!</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

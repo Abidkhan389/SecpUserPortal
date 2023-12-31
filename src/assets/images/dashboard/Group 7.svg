@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="65" height="65" viewBox="0 0 65 65">
+  <defs>
+    <filter id="Frame_313348" x="0" y="0" width="65" height="65" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.078"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_7" data-name="Group 7" transform="translate(-1746.5 -51)">
+    <g id="Frame_313348-2" data-name="Frame 313348" transform="translate(1751 55.5)">
+      <g transform="matrix(1, 0, 0, 1, -4.5, -4.5)" filter="url(#Frame_313348)">
+        <g id="Frame_313348-3" data-name="Frame 313348" transform="translate(4.5 4.5)" fill="#f5fffb" stroke="rgba(0,196,68,0.36)" stroke-width="1">
+          <rect width="56" height="56" rx="12" stroke="none"/>
+          <rect x="0.5" y="0.5" width="55" height="55" rx="11.5" fill="none"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_3328" data-name="Group 3328">
+      <g id="Group_3327" data-name="Group 3327">
+        <g id="vuesax_linear_notification-bing" data-name="vuesax/linear/notification-bing" transform="translate(1764.835 72.368)">
+          <g id="vuesax_linear_notification-bing-2" data-name="vuesax/linear/notification-bing">
+            <g id="notification-bing">
+              <path id="Vector" d="M0,0V3.765" transform="translate(13.566 7.281)" fill="none" stroke="#00c444" stroke-linecap="round" stroke-width="1.5"/>
+              <path id="Vector-2" data-name="Vector" d="M10.081,0A7.527,7.527,0,0,0,2.552,7.529V9.9a5.87,5.87,0,0,1-.712,2.578L.4,14.878a2.411,2.411,0,0,0,1.357,3.674,26.386,26.386,0,0,0,16.653,0,2.509,2.509,0,0,0,1.357-3.674l-1.436-2.4A5.912,5.912,0,0,1,17.622,9.9V7.529A7.573,7.573,0,0,0,10.081,0Z" transform="translate(3.508 2.261)" fill="none" stroke="#00c444" stroke-linecap="round" stroke-width="1.5"/>
+              <path id="Vector-3" data-name="Vector" d="M7.529,0A3.778,3.778,0,0,1,3.765,3.765,3.771,3.771,0,0,1,1.108,2.657,3.771,3.771,0,0,1,0,0" transform="translate(9.802 21.276)" fill="none" stroke="#00c444" stroke-width="1.5"/>
+              <path id="Vector-4" data-name="Vector" d="M0,0H27.132V27.132H0Z" fill="none" opacity="0"/>
+            </g>
+          </g>
+        </g>
+        <rect id="Frame_313348-4" data-name="Frame 313348" width="13.566" height="13.566" rx="6.783" transform="translate(1778.684 68.128)" fill="#157afe"/>
+      </g>
+    </g>
+  </g>
+</svg>

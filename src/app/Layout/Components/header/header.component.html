@@ -1,0 +1,134 @@
+<!-- <div [class]="'app-header header-shadow ' + (config$ | async).headerTheme" > -->
+  <!-- \ -->
+  <!-- <nav class="navbar navbar-expand-lg" style="width:100%">
+    <div class="header-left ">
+      <div>
+        <h5 class="h5-text">Dashboard</h5>
+        <h6 class="h6-text">E-learning platform</h6 >
+      </div>
+    </div>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <!-- <div class="header-right"> -->
+    <!-- <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+     
+
+      
+      <ul class="navbar-nav mr-auto  mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <app-search-box></app-search-box>
+        </li>
+        <li class="nav-item">
+          <app-user-box></app-user-box>
+        </li>
+        
+      </ul>
+    </div> -->
+    <!-- </div> -->
+  <!-- </nav> -->
+<!-- </div> -->
+  <!-- <div class="logo-src">
+  </div>
+  <div class="app-header__content">
+  <div class="app-header-left ">
+    <div>
+      <h5 class="h5-text">Dashboard</h5>
+      <h6 class="h6-text">E-learning platform</h6 >
+    </div>
+  </div>
+  <div class="app-header-right">
+    <app-search-box></app-search-box>
+    <app-user-box></app-user-box>
+  </div>
+  </div> -->
+  <!-- <div class="app-header__content">
+    <img src="../../../../assets/images/secp.jfif" style="height: 70px; width:95px" >
+
+   
+    <div class="app-header-right">
+      <app-dots></app-dots>
+      <app-user-box></app-user-box>
+    </div>
+  </div> -->
+  <!-- <div class="app-header__mobile-menu">
+    <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
+      [ngClass]="{'is-active' : globals.toggleSidebarMobile}" (click)="toggleSidebarMobile()">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+  </div>
+  -->
+<!-- </div> -->
+<!-- 
+<div class="head_content">
+<nav class="navbar navbar-expand-lg navbar-light " style="width:100%">
+  <div class="header-left ">
+    <div>
+      <h5 class="h5-text">Dashboard</h5>
+      <h6 class="h6-text">E-learning platform</h6 >
+    </div>
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" 
+  data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" 
+  aria-expanded="false" aria-label="Toggle navigation"  (click)="toggleCollapsed()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="header-right">
+  <div  class="collapse navbar-collapse" id="navbarTogglerDemo02"  [ngClass]="{ collapse: collapsed, 'navbar-collapse': true }">
+   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <app-search-box></app-search-box>
+      </li>
+      <li class="nav-item">
+        <app-user-box></app-user-box>
+      </li>
+    </ul>
+  </div>
+ </div>
+</nav>
+</div> -->
+
+
+
+
+<div [class]="'app-header header-shadow ' + (config$ | async).headerTheme">
+  <!-- <div class="logo-src">
+    <img style="width: 100%; height: 100%;"  src="../../../../assets/images/logo-khazana.png" alt="">
+  </div> -->
+  <div class="app-header__content">
+    <div class="app-header-left">
+       <div>
+      <h5 class="h5-text">Dashboard</h5>
+      <h6 class="h6-text">E-learning platform</h6 >
+    </div>
+     
+    </div>
+    <div class="app-header-right">
+      <app-search-box></app-search-box>
+      <app-dots></app-dots>
+      <app-user-box ></app-user-box>
+    </div>
+  </div>
+  <div class="app-header__mobile-menu">
+    <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
+            [ngClass]="{'is-active' : globals.toggleSidebarMobile}" (click)="toggleSidebarMobile()">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+  </div>
+  <div class="app-header__menu">
+    <span>
+        <button class="btn-icon btn-icon-only btn btn-primary" [ngClass]="{'is-active' : globals.toggleHeaderMobile}"
+                (click)="toggleHeaderMobile()">
+            <div class="btn-icon-wrapper">
+                <fa-icon [icon]="faEllipsisV"></fa-icon>
+            </div>
+        </button>
+    </span>
+  </div>
+</div>

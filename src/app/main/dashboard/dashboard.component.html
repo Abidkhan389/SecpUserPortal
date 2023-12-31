@@ -1,0 +1,255 @@
+<div class="container-fluid">
+
+    <!-------------Learning Overview------------->
+    <div class="row">
+        <!----card 1-->
+        <div class="col-12">
+            <span class="dashboard-headings">Learning Overview</span>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 col-12 p-2 animate__animated animate__zoomIn">
+            <div class="card overview-card decor-cc">
+                <div class="card-content inherit-height">
+                    <div class="card-body inherit-height">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2 col-2 overview-img-col">
+                                <img width="40" src="../../../assets/images/dashboard/overview/award.png">
+                            </div>
+                            <div class="col-md-10 col-sm-10 col-10">
+                                <span style="font-size:20px">
+                                    <b>{{overviewModel?.completedCoursesCount}}</b>
+                                    <h6 class="h6-text">Completed Courses</h6>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!----card 2-->
+        <div class="col-lg-4 col-md-6 col-sm-12 col-12 p-2 animate__animated animate__zoomIn" style="padding: 7px 13px">
+            <div class="card overview-card decor-oc">
+                <div class="card-content inherit-height">
+                    <div class="card-body inherit-height">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2 col-2 overview-img-col">
+                                <img width="40" src="../../../assets/images/dashboard/overview/o-book.png">
+                            </div>
+                            <div class="col-md-10 col-sm-10 col-10">
+                                <span style="font-size:20px">
+                                    <b>{{overviewModel?.onGoingCourseCount}}</b>
+                                    <h6 class="h6-text">Ongoing Courses</h6>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!----card 3-->
+        <div class="col-lg-4 col-md-6 col-sm-12 col-12 p-2 animate__animated animate__zoomIn">
+            <div class="card overview-card decor-mc">
+                <div class="card-content inherit-height">
+                    <div class="card-body inherit-height">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2 col-2 overview-img-col">
+                                <img width="40"
+                                    src="../../../assets/images/dashboard/overview/vuesax-outline-award.png">
+                            </div>
+                            <div class="col-md-10 col-sm-110 col-10">
+                                <span style="font-size:20px">
+                                    <b>{{overviewModel?.certificateCount}}</b>
+                                    <h6 class="h6-text">My Certification</h6>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---------------Continue Learning--------------------->
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-12 ">
+            <span class="dashboard-headings">Continue Learning</span>
+        </div>
+        <!-- <div class="col-lg-8 col-md-8 col-sm-10" style="overflow: auto;" >
+            <div class="scrolling-wrapper" >
+                <button type="text" class="btn-category" routerLink="/category">All Category</button>
+                <div class="cat-div" *ngFor="let c of categoryArr.slice(0, 5)">
+                        {{c.categoryName}}                              
+                    </div>                             
+            </div>
+        </div> -->
+        <div class="col-lg-2 col-md-2 col-sm-12 ">
+            <span class="next-span">
+                <a routerLink="/courses">See all
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </span>
+        </div>
+    </div>
+    <!-- <div class="row">
+    <div class="col-12">
+        <button><i class="fa fa-angle-left" style="font-size:24px" (click)="scrollLeft()"></i> </button>
+        <i class="fa fa-angle-right" style="font-size:24px" (click)="scrollRight()"></i> 
+    </div>
+</div> -->
+
+
+    <div class="horizontal-scrollable mt-3">
+        <div class="row scroll-row" #widgetsContent style="scroll-behavior: smooth">
+            <ng-container *ngIf="courseArr.length > 0; else noCourses">
+                <div class="col-lg-3 col-md-4 col-sm-12 col-12 animate__animated animate__zoomIn"
+                    *ngFor="let item of courseArr">
+                    <div class="card continue-card" (click)="goto(item)" [ngClass]="{
+                  'disablecard-background': item.timeRestriction > 0 || item.disable == 0,
+                  'enablecard-background': item.timeRestriction <= 0 && item.disable == 1}">
+                        <div class="card-content inherit-height">
+                            <div class="card-body inherit-height">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <img class="card-img img-fluid rounded mb-1"
+                                            src="../../../assets/images/Courses/{{item.icon}}.png"
+                                            alt="Card image cap">
+                                    </div>
+                                    <div class="col-12" style="padding:10px;">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <h6 class="h5-text course-title" title={{item.title}}>{{item.title}}
+                                                </h6>
+                                                <h6 class="h6-text">{{item.categoryName}}</h6>
+                                            </div>
+                                            <div class="col-2" style="direction:rtl">
+                                                <img
+                                                    src="../../../assets/images/dashboard/conitune/vuesax-outline-video-circle.png">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <ngb-progressbar type="success" [value]=item.value></ngb-progressbar>
+                                            </div>
+                                            <div class="col-2 p-0 text-center">
+                                                <span class="percent-text"><b>{{item.value}}%</b></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-template #noCourses>
+                <div class="col-lg-3 col-md-6 col-sm-12 col-12 p-2 animate__animated animate__zoomIn"
+                    style="text-align: center;">
+                    <div class="card continue-card" style="height: auto;">
+                        <div class="card-content inherit-height">
+                            <div class="card-body inherit-height">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <img class="card-img img-fluid rounded mb-1"
+                                            src="../../../assets/images/dashboard/conitune/notFound.png"
+                                            alt="Card image cap">
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-12" style="padding:10px;">
+                                                <h6 class="h5-text course-title" style="color:  black">No Course Found
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+
+
+
+    <!---------------Courses Recommendation---------------------->
+    <div class="row mt-3">
+        <div class="col-lg-3 col-md-3 col-sm-12 ">
+            <span class="dashboard-headings">Course Recommendation</span>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-10" style="overflow: auto;">
+            <div class="scrolling-wrapper">
+                <button type="text" class="btn-category" routerLink="/category">All Category</button>
+                <div class="cat-div" *ngFor="let c of categoryArr.slice(0, 5)" style="padding: 5px 8px;">
+                    {{c.categoryName}}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12 ">
+            <span class="next-span">
+                <a routerLink="/recommendation">See all
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </span>
+        </div>
+    </div>
+
+    <div class="horizontal-scrollable">
+        <div class="row scroll-row">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-12 p-2  animate__animated animate__zoomIn"
+                *ngFor="let i of  recommendationArr" style="display:inline-block;float:none">
+                <div class="card recommendation-card">
+                    <div class="card-content inherit-height">
+                        <div class="card-body inherit-height">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-5 col-md-5 col-sm-5 col-5">
+                                    <div class="recommendation-card-img rounded"
+                                        style="background-image: url(../../../assets/images/dashboard/recommendation/{{i.icon}}.png)">
+                                    </div>
+                                </div>
+                                <div class="col-xl-8  col-lg-7 col-md-7 col-sm-7 col-7">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h6 class="h5-text course-title" title={{i.title}}>{{i.title}}</h6>
+                                            <h6 class="h6-text">{{i.categoryName}}</h6>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="text" class="recommendation-btn"
+                                                [disabled]="i.enrolledStatus !== '' || i.enrolledStatus === '0' || i.enrolledStatus === '1' || i.appliedStatus === '1'"
+                                                (click)="Enrollement(i.courseId,i.title,i.description)">
+                                                {{i.enrolledStatus === "" ? (i.appliedStatus === "1" ? "Applied" :
+                                                "Enroll Now") : (i.enrolledStatus === "0" ? "Enrolled" : "Completed")}}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-4 col-md-6 col-sm-12 col-12  animate__animated animate__zoomIn" *ngFor="let i of  recommendationArr" style="display:inline-block;float:none">
+            <div class="card recommendation-card" >
+            <div class="card-content inherit-height">
+                <div class="card-body inherit-height animate__animated animate__zoomIn" style="padding-top: 12px">
+                   <div class="row " >
+                           <div class="col-5" style="padding-right: 0px">
+                            <img class="card-img img-fluid1 rec-img rounded mb-1" src="../../../assets/images/dashboard/recommendation/{{i.icon}}.png" alt="Card image cap">
+                           </div>
+                           <div class="col-7" style="position:relative;">
+                                <h6 class="h5-text">{{i.title}}</h6 >
+                                <h6 class="h6-text">{{i.category}}</h6>
+                           
+                                <button type="text" class="recommendation-btn">
+                                    Enroll Now
+                                </button>
+                            
+                            </div>
+                        </div>
+                    </div>
+               </div>
+        </div>
+    </div> -->
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div *ngIf="!againApproval">
+    <div class="modal-header bg-light custommargintop" style="margin: -24px; padding: 9px;">
+        <h4 class="modal-title text-bold-500 font-medium-1">{{title}}</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeClick()">
+        </button>
+    </div>
+    <div class=" modal-body  mt-2" style="max-height:70vh ; width: 35vw; overflow: auto;">
+        <p>{{description}}</p>
+    </div>
+    <div class="modal-footer bg-light custommarginbottom" style="margin: -24px; padding: 2px;">
+        <button class="btn btn-raised btn-secondary me-1 " type="button" (click)="closeClick()">
+            <i class="fa fa-close"></i> Cancel
+        </button>
+        <button class="btn btn-raised btn-success" style="background-color: #00C444;" type="button" (click)="Submit()">
+            <i class="fa fa-check-square-o"></i>Enroll
+        </button>
+    </div>
+</div>
+<div *ngIf="againApproval">
+    <div class="modal-header bg-light custommargintop" style="margin: -24px; padding: 9px;">
+        <h4 class="modal-title text-bold-500 font-medium-1">{{title}}</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeClick()">
+        </button>
+    </div>
+    <div class=" modal-body  mt-2" style="max-height:60vh ; max-width: 40vw; overflow: auto;">
+        <p>Your Course duration ended If You Want Access for this Course, then please send again request for enrollment!
+            Thanks </p>
+    </div>
+    <div class="modal-footer bg-light custommarginbottom" style="margin: -24px; padding: 2px;">
+        <button class="btn btn-raised btn-secondary me-1 " type="button" (click)="closeClick()">
+            <i class="fa fa-close"></i> Cancel
+        </button>
+        <button class="btn btn-raised btn-success" style="background-color: #00C444;" type="button" (click)="Submit()">
+            <i class="fa fa-check-square-o"></i>Enroll Again
+        </button>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="card p-3">
+    <!-- <div class="end">
+        <button class="mb-2 me-2 btn-icon btn-shadow  btn btn-outline-primary float-end"  (click)="endPresentation()" type="button">
+            <i class="fa fa-x"></i> End Presentation
+        </button>
+    </div> -->
+    <div class="row">
+        <div class="col-md-12">
+            <ngx-doc-viewer
+                url={{doc}}
+                viewer="url" style="width:100%;height:100vh;" disableContent="popout">
+            </ngx-doc-viewer>
+        </div>
+        <!-- <div class="">
+            <button class="mb-2 me-2 btn-icon btn-shadow  btn btn-outline-primary float-start" style="margin-left: 140px"  (click)="endPresentation()" type="button">
+                <i class="fa fa-x"></i> End Presentation
+            </button>
+        </div> -->
+    </div>
+</div>

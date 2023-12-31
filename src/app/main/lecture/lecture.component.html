@@ -1,0 +1,219 @@
+<div class="container-fluid">
+    <div class="row" style="background-color: #ebfff7">
+        <nav aria-label="breadcrumb" class="mt-2" style="--bs-breadcrumb-divider: '|';">
+            <ol class="breadcrumb ">
+                <li class="breadcrumb-item active " aria-current="page"><a routerLink="/dashboard"><i
+                            class="fa fa-home fa-2x" style="color: black;" aria-hidden="true"></i>
+                    </a></li>
+                <div class="verticalLine"></div>
+                <li class="breadcrumb-item active custom-margin hoverTxtUndeline"><a routerLink="/courses">Courses
+                    </a></li>
+                <div class="verticalLine"></div>
+                <li class="breadcrumb-item active custom-margin hover" aria-current="page">Lecture</li>
+            </ol>
+        </nav>
+
+    </div>
+    <div class="row mt-2">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-12 mb-3 animate__animated animate__zoomIn">
+            <div class="col-12 accordian-wrapper">
+                <ngb-accordion #acc="ngbAccordion" [activeIds]="['panel1']">
+                    <ngb-panel id="panel1">
+                        <ng-template ngbPanelTitle>
+                            <div class="panel-title" (click)="toggle()">
+                                <img width="25" src="../../../assets/images/course-content/arrow_back_ios.png"
+                                    *ngIf="collapse">
+                                <img width="25" src="../../../assets/images/course-content/arow-up.png"
+                                    *ngIf="!collapse">
+                                <h6 class="panel-title-text">{{courseModel?.title}}</h6>
+                            </div>
+
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <div class="row" style="margin:0px 35px">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-lg-3  col-md-4 col-sm-12 col-12">
+                                            <!-- <div class="row">
+                                                <div class="col-2 text-center">
+                                                    <img width="25"
+                                                        src="../../../assets/images/course-content/Group 3322.png">
+                                                </div>
+                                                <div class="col-10">
+                                                    <span class="time-green-text">{{courseModel?.value}} </span>
+                                                    <span class="time-gray-text">of video left</span>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                        <!-- <div class="col-lg-3  col-md-4 col-sm-12 col-12">
+                                    <img src="../../../assets/images/course-content/Group 3322.png">
+                                    &nbsp;
+                                    <span class="time-green-text">{{model?.time.video}} </span>
+                                    <span class="time-gray-text">of video left</span> 
+                                </div> -->
+                                        <div class=" col-lg-3 col-md-4 col-sm-12 col-12">
+                                            <!-- <div class="row">
+                                                <div class="col-2 text-center">
+                                                    <img width="25"
+                                                        src="../../../assets/images/course-content/Group 3341.png">
+                                                </div>
+                                                <div class="col-10">
+                                                    <span class="time-green-text">{{courseModel?.value}} </span>
+                                                    <span class="time-gray-text">of video left</span>
+                                                </div>
+                                            </div> -->
+                                            <!-- <img src="../../../assets/images/course-content/Group 3341.png">
+                                    &nbsp;
+                                    <span class="time-green-text">{{model?.time.reading}} </span>
+                                    <span class="time-gray-text">of reading left</span>  -->
+
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-sm-12 col-12">
+                                            <!-- <div class="row">
+                                                <div class="col-2 text-center">
+                                                    <img width="25"
+                                                        src="../../../assets/images/course-content/Group 3342.png">
+                                                </div>
+                                                <div class="col-10">
+                                                    <span class="time-green-text">{{courseModel?.value}} </span>
+                                                    <span class="time-gray-text">of video left</span>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <h6 class="innerpanel-title-text">Course Description</h6>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <hr class="sb-line-2" style="margin:10px 0px">
+                                </div>
+                                <div class="col-12">
+                                    {{courseModel?.description}}
+                                </div>
+                                <div class="col-12">
+                                    <hr class="sb-line-2" style="margin:10px 0px">
+                                </div>
+                                <div class="col-12">
+                                    <ngb-accordion class="abc" #acc="ngbAccordion" [activeIds]="['panel2']">
+                                        <ngb-panel id="panel2">
+                                            <ng-template ngbPanelTitle>
+                                                <div class="panel-title" (click)="toggleInner()"
+                                                    style="margin:0px -30px">
+                                                    <img width="25"
+                                                        src="../../../assets/images/course-content/arrow_back_ios.png"
+                                                        *ngIf="innercollapse">
+                                                    <img width="25"
+                                                        src="../../../assets/images/course-content/arow-up.png"
+                                                        *ngIf="!innercollapse">
+                                                    <h6 class="innerpanel-title-text">Lectures</h6>
+                                                </div>
+                                            </ng-template>
+                                            <ng-template ngbPanelContent>
+                                                <div class="row " *ngIf="!noLecture">
+                                                    <div class="col-12" style="padding:5px 0px;"
+                                                        *ngFor="let lectures of courseModel.lectureList">
+                                                        <div class="card panel-cards" style="overflow: auto;">
+                                                            <div class="card-content">
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                            <div class="row">
+                                                                                <div class="col-2 "
+                                                                                    style="text-align:end">
+                                                                                    <!-- <img width="30" class="img-align-grade" src="../../../assets/images/course-content/Group 3322.png" *ngIf="t.type==0"> -->
+                                                                                    <img width="30"
+                                                                                        class="img-align-grade"
+                                                                                        src="../../../assets/images/course-content/Group 3341.png">
+                                                                                    <!-- <img width="30" class="img-align-grade" src="../../../assets/images/course-content/test.png" *ngIf="t.type==2"> -->
+                                                                                </div>
+                                                                                <div class="col-10 col-md-6 col-sm-12"
+                                                                                    style="text-align:left;">
+                                                                                    <h6 class="h5-text mb-0">
+                                                                                        {{lectures.lectureTitle}}</h6>
+                                                                                    <h6 class="h6-text">
+                                                                                        Lecture
+                                                                                        Number-{{lectures.lectureNumber}}
+                                                                                    </h6>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <!-- </div> -->
+                                                                        </div>
+                                                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                            <button class="panel-btn"
+                                                                                (click)="goto(lectures)">View
+                                                                                Content</button>
+                                                                            <!-- <button class="panel-btn" *ngIf="t.type==0" (click)="goto(t)">View Video</button>
+                                                                <button class="panel-btn" *ngIf="t.type==2" (click)="goto(t)">Attempt</button> -->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card w-100" *ngIf="noLecture"
+                                                    style="background-color: #ebfff7;">
+                                                    <div class="card-body" style="text-align: center;">
+                                                        <h5 class="card-title">Lectures</h5>
+                                                        <p class="card-text" style="font-size: 18px;">Sorry!Lectures for
+                                                            this <b>Course</b> are not avaible right now.</p>
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                        </ngb-panel>
+
+                                    </ngb-accordion>
+
+                                </div>
+
+
+                            </div>
+                        </ng-template>
+                    </ngb-panel>
+
+
+                </ngb-accordion>
+
+            </div>
+
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+
+            <div class="col-12" style="padding:2px">
+                <div class="card watch-grade-card " (click)="gotograde()">
+                    <div class="card-content inherit-height">
+                        <div class="card-body inherit-height">
+                            <div class="panel-title">
+
+                                <img src="../../../assets/images/course-content/sticky_note_2.png">
+
+                                <div style="margin:2px 10px">
+                                    <h6 class="h5-text mb-0">Grades</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12" style="padding:2px">
+                <div class="card watch-grade-card " (click)="gotoassessment(courseModel)">
+                    <div class="card-content inherit-height">
+                        <div class="card-body inherit-height">
+                            <div class="panel-title">
+
+                                <img src="../../../assets/images/course-content/sticky_note_2.png">
+
+                                <div style="margin:2px 10px">
+                                    <h6 class="h5-text mb-0">Assessment</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

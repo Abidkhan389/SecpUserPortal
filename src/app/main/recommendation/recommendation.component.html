@@ -1,0 +1,113 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12 ">
+            <span class="dashboard-headings">Course Recommendation</span>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-10 d-flex animate__animated animate__zoomIn">
+            <button type="text" class="btn-category" style="width: 130px;">All Category</button>
+            <i class="fa fa-angle-left scroll" style="font-size:24px;scroll-behavior: smooth;"
+                (click)="scrollLeft()"></i>
+            <div class="scrolling-wrapper modules" #widgetsContent>
+                <div class="cat-div" *ngFor="let item of categoryArr "
+                    [ngClass]="{ 'selected': item.categoryId == selectedItem }"
+                    style="cursor: pointer; padding: 5px 8px;" (click)="GetCoursesByCategoryId(item.categoryId)">
+                    {{item.categoryName}}
+                </div>
+            </div>
+            <i class="fa fa-angle-right scroll" style="font-size:24px;scroll-behavior: smooth;"
+                (click)="scrollRight()"></i>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12 ">
+            <span class="next-span">
+                <a routerLink="/category">See all
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </span>
+        </div>
+    </div>
+    <!-- <div class="row">
+        <div class="col-12">
+            <span class="dashboard-headings">Course Recommendation</span>
+        </div>
+    </div> -->
+
+
+    <div class="row mt-2" *ngIf="!categorydetail && !courseNotFound">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-12 p-2  animate__animated animate__zoomIn"
+            *ngFor="let i of  recommendationArr" style="display:inline-block;float:none">
+            <div class="card recommendation-card">
+                <div class="card-content inherit-height">
+                    <div class="card-body inherit-height">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-5 col-md-5 col-sm-5 col-5">
+                                <div class="recommendation-card-img rounded"
+                                    style="background-image: url(../../../assets/images/dashboard/recommendation/{{i.icon}}.png)">
+                                </div>
+                            </div>
+                            <div class="col-xl-8  col-lg-7 col-md-7 col-sm-7 col-7">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h6 class="h5-text course-title" title={{i.title}}>{{i.title}}</h6>
+                                        <h6 class="h6-text">{{i.categoryName}}</h6>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="text" class="recommendation-btn"
+                                            [disabled]="i.enrolledStatus !== '' || i.enrolledStatus === '0' || i.enrolledStatus === '1' || i.appliedStatus === '1'"
+                                            (click)="Enrollement(i.courseId,i.title,i.description)">
+                                            {{i.enrolledStatus === "" ? (i.appliedStatus === '1' ? 'Applied' : 'Enroll
+                                            Now') : (i.enrolledStatus === '0' ? 'Enrolled' : 'Completed')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row  mt-2" *ngIf="categorydetail && !courseNotFound">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-12 p-2  animate__animated animate__zoomIn"
+            *ngFor="let i of  courseList" style="display:inline-block;float:none">
+            <div class="card recommendation-card">
+                <div class="card-content inherit-height">
+                    <div class="card-body inherit-height">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-5 col-md-5 col-sm-5 col-5">
+                                <div class="recommendation-card-img rounded"
+                                    style="background-image: url(../../../assets/images/dashboard/recommendation/{{i.icon}}.png)">
+                                </div>
+                            </div>
+                            <div class="col-xl-8  col-lg-7 col-md-7 col-sm-7 col-7">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h6 class="h5-text course-title" title={{i.title}}>{{i.title}}</h6>
+                                        <h6 class="h6-text">{{i.categoryName}}</h6>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="text" class="recommendation-btn"
+                                            [disabled]="i.enrolledStatus !== '' || i.enrolledStatus === '0' || i.enrolledStatus === '1' || i.appliedStatus === '1'"
+                                            (click)="Enrollement(i.courseId,i.title,i.description)">
+                                            {{i.enrolledStatus === "" ? (i.appliedStatus === "1" ? "Applied" : "Enroll
+                                            Now") : (i.enrolledStatus === "0" ? "Enrolled" : "Completed")}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row notFound mt-5" *ngIf="courseNotFound">
+        <div class="card notFoundCard">
+            <img class="card-img rounded mb-1" src="../../../assets/images/dashboard/conitune/notFound.png"
+                alt="Card image cap" style="height: 14.5rem;">
+            <div class="card-body">
+                <p class="card-text"><strong> No Course found!</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
